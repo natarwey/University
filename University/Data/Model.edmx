@@ -256,7 +256,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ingener_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Ingener" Type="Self.Ingener" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Employee">
@@ -280,7 +282,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Prepod_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Prepod" Type="Self.Prepod" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Employee">
@@ -316,7 +320,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ZavKafedra_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ZavKafedra" Type="Self.ZavKafedra" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Employee">
@@ -685,7 +691,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ingener_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Ingener" Type="Self.Ingener" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Employee">
@@ -697,7 +705,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Prepod_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Prepod" Type="Self.Prepod" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Employee">
@@ -709,7 +719,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ZavKafedra_Employee">
-          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ZavKafedra" Type="Self.ZavKafedra" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Employee">

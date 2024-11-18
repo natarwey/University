@@ -1,0 +1,13 @@
+﻿<Page x:Class="University.Pages.DepartmentsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:University.Pages"
+      mc:Ignorable="d" 
+      Title="Кафедры" Height="300" Width="400">
+    
+    <Grid>
+        <TextBlock Text="Страница кафедр" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</Page>

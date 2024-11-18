@@ -8,11 +8,11 @@
         WindowStartupLocation="CenterScreen"
         Title="QRWindow" Height="450" Width="800">
     <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+        <!--<StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
             <Button x:Name="createQrBtn" Content="Создать QR" Width="150" Height="50" Click="Button_Click"></Button>
         </StackPanel>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Image x:Name="imageQr" Height="200" Width="200" ></Image>
-        </StackPanel>
+        </StackPanel>-->
     </Grid>
 </Window>

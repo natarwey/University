@@ -1,0 +1,23 @@
+﻿<Window x:Class="University.Pages.EditEmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:University.Pages"
+        mc:Ignorable="d"
+        Title="Редактирование сотрудника" Height="300" Width="400">
+    
+    <Grid>
+        <!--<StackPanel Margin="10">
+            <Label Content="Фамилия"/>
+            <TextBox x:Name="txtFam" Text="{Binding Fam}"/>
+            <Label Content="Должность"/>
+            <TextBox x:Name="txtDolzhnost" Text="{Binding Dolzhnost}"/>
+            <Label Content="Зарплата"/>
+            <TextBox x:Name="txtZp" Text="{Binding Zp}"/>
+            <Label Content="Шеф"/>
+            <TextBox x:Name="txtShef" Text="{Binding Shef}"/>
+            <Button x:Name="btnSave" Content="Сохранить" Width="100" Margin="0,10,0,0" Click="btnSave_Click"/>
+        </StackPanel>-->
+    </Grid>
+</Window>

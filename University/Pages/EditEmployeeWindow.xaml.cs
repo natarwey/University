@@ -10,22 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using University.Data;
 
 namespace University.Pages
 {
-    public partial class EmployeesPage : Page
+    /// <summary>
+    /// Логика взаимодействия для EditEmployeeWindow.xaml
+    /// </summary>
+    public partial class EditEmployeeWindow : Window
     {
-        private List<Employee> employees;
-
-        public EmployeesPage()
+        public EditEmployeeWindow()
         {
             InitializeComponent();
-
         }
-
-        
     }
 }

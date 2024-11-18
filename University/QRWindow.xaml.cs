@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Drawing;
 
 namespace University
 {
@@ -27,29 +28,29 @@ namespace University
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) // Кнопка создания QR кода
-        {
-            // Ссылка на XL таблицу
-            string soucer_xl = "Вставьте ссылку на google таблицу";
-            // Создание переменной библиотеки QRCoder
-            QRCoder.QRCodeGenerator qr = new QRCoder.QRCodeGenerator();
-            // Присваеваем значиения
-            QRCoder.QRCodeData data = qr.CreateQrCode(soucer_xl, QRCoder.QRCodeGenerator.ECCLevel.L);
-            // переводим в Qr
-            QRCoder.QRCode code = new QRCoder.QRCode(data);
-            Bitmap bitmap = code.GetGraphic(100);
-            /// Создание картинки
-            using (MemoryStream memory = new MemoryStream())
-            {
-                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
-                memory.Position = 0;
-                BitmapImage bitmapimage = new BitmapImage();
-                bitmapimage.BeginInit();
-                bitmapimage.StreamSource = memory;
-                bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapimage.EndInit();
-                imageQr.Source = bitmapimage;
-            }
-        }
+        //private void Button_Click(object sender, RoutedEventArgs e) // Кнопка создания QR кода
+        //{
+        //    // Ссылка на XL таблицу
+        //    string soucer_xl = "Вставьте ссылку на google таблицу";
+        //    // Создание переменной библиотеки QRCoder
+        //    QRCoder.QRCodeGenerator qr = new QRCoder.QRCodeGenerator();
+        //    // Присваеваем значиения
+        //    QRCoder.QRCodeData data = qr.CreateQrCode(soucer_xl, QRCoder.QRCodeGenerator.ECCLevel.L);
+        //    // переводим в Qr
+        //    QRCoder.QRCode code = new QRCoder.QRCode(data);
+        //    Bitmap bitmap = code.GetGraphic(100);
+        //    /// Создание картинки
+        //    using (MemoryStream memory = new MemoryStream())
+        //    {
+        //        bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
+        //        memory.Position = 0;
+        //        BitmapImage bitmapimage = new BitmapImage();
+        //        bitmapimage.BeginInit();
+        //        bitmapimage.StreamSource = memory;
+        //        bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
+        //        bitmapimage.EndInit();
+        //        imageQr.Source = bitmapimage;
+        //    }
+        //}
     }
 }

@@ -67,29 +67,13 @@ namespace University.Pages
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) // Кнопка создания QR кода
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // Ссылка на XL таблицу
-            string soucer_xl = "Вставьте ссылку на google таблицу";
-            // Создание переменной библиотеки QRCoder
-            QRCoder.QRCodeGenerator qr = new QRCoder.QRCodeGenerator();
-            // Присваеваем значиения
-            QRCoder.QRCodeData data = qr.CreateQrCode(soucer_xl, QRCoder.QRCodeGenerator.ECCLevel.L);
-            // переводим в Qr
-            QRCoder.QRCode code = new QRCoder.QRCode(data);
-            Bitmap bitmap = code.GetGraphic(100);
-            /// Создание картинки
-            using (MemoryStream memory = new MemoryStream())
-            {
-                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
-                memory.Position = 0;
-                BitmapImage bitmapimage = new BitmapImage();
-                bitmapimage.BeginInit();
-                bitmapimage.StreamSource = memory;
-                bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapimage.EndInit();
-                imageQr.Source = bitmapimage;
-            }
+            QRWindow qrWindow = new QRWindow();
+
+            // Отображаем новое окно
+            qrWindow.Show();
+
         }
     }
 }

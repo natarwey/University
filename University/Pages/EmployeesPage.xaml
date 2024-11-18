@@ -5,9 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:University.Pages"
       mc:Ignorable="d" 
-      Title="Сотрудники" Height="300" Width="400">
+      Title="Сотрудники" Height="400" Width="600">
     
-      <Grid>
-    <TextBlock Text="Страница сотрудников" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Grid>
+        <!--<DataGrid x:Name="dgEmployees" AutoGenerateColumns="False" Margin="10" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" Binding="{Binding Numder}" Width="*"/>
+                <DataGridTextColumn Header="Шифр" Binding="{Binding Shifr}" Width="*"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Fam}" Width="*"/>
+                <DataGridTextColumn Header="Должность" Binding="{Binding Dolzhnost}" Width="*"/>
+                <DataGridTextColumn Header="Зарплата" Binding="{Binding Zp}" Width="*"/>
+                <DataGridTextColumn Header="Шеф" Binding="{Binding Shef}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="10">
+            <Button x:Name="btnAdd" Content="Добавить" Width="100" Margin="5" Click="btnAdd_Click"/>
+            <Button x:Name="btnEdit" Content="Изменить" Width="100" Margin="5" Click="btnEdit_Click"/>
+            <Button x:Name="btnDelete" Content="Удалить" Width="100" Margin="5" Click="btnDelete_Click"/>
+        </StackPanel>-->
     </Grid>
 </Page>

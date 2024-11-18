@@ -45,5 +45,7 @@ namespace University.Data
         public virtual DbSet<Gimnazisty> Gimnazisty { get; set; }
         public virtual DbSet<Ingener> Ingener { get; set; }
         public virtual DbSet<ZavKafedra> ZavKafedra { get; set; }
+        public virtual DbSet<Authorization> Authorization { get; set; }
+        public virtual DbSet<People> People { get; set; }
     }
 }

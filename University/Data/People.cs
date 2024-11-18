@@ -12,22 +12,24 @@ namespace University.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class People
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Student()
+        public People()
         {
-            this.Exam = new HashSet<Exam>();
+            this.Employee = new HashSet<Employee>();
+            this.Student = new HashSet<Student>();
         }
     
-        public int RegNumber { get; set; }
-        public string Number { get; set; }
-        public string Fam { get; set; }
-        public Nullable<int> id_people { get; set; }
+        public int id { get; set; }
+        public string last_name { get; set; }
+        public string first_name { get; set; }
+        public string otche_nash { get; set; }
     
+        public virtual Authorization Authorization { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Exam> Exam { get; set; }
-        public virtual Specialnost Specialnost { get; set; }
-        public virtual People People { get; set; }
+        public virtual ICollection<Employee> Employee { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Student { get; set; }
     }
 }

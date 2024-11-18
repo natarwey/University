@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище UchPr_Basharova_321Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище UchPr_Basharova_321Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Akademiki">
           <Key>
             <PropertyRef Name="Id_akademiki" />
@@ -26,6 +26,15 @@
           <Property Name="Id" Type="int" />
           <Property Name="Tittle" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Otryad" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="role" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -65,6 +74,7 @@
           <Property Name="Dolzhnost" Type="nvarchar" MaxLength="50" />
           <Property Name="Zp" Type="decimal" Precision="10" Scale="2" />
           <Property Name="Shef" Type="int" />
+          <Property Name="id_people" Type="int" />
         </EntityType>
         <EntityType Name="Exam">
           <Key>
@@ -127,6 +137,15 @@
           <Property Name="Tittle" Type="nvarchar" MaxLength="50" />
           <Property Name="Fakultet" Type="nvarchar" MaxLength="2" />
         </EntityType>
+        <EntityType Name="People">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="otche_nash" Type="varchar" MaxLength="50" />
+        </EntityType>
         <EntityType Name="Prepod">
           <Key>
             <PropertyRef Name="Number" />
@@ -149,6 +168,7 @@
           </Key>
           <Property Name="RegNumber" Type="int" Nullable="false" />
           <Property Name="Number" Type="nvarchar" MaxLength="8" />
+          <Property Name="id_people" Type="int" />
           <Property Name="Fam" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -219,6 +239,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Employee_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="id_people" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Exam_Discipline">
           <End Role="Discipline" Type="Self.Discipline" Multiplicity="0..1" />
           <End Role="Exam" Type="Self.Exam" Multiplicity="*" />
@@ -281,6 +313,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_People_Authorization">
+          <End Role="Authorization" Type="Self.Authorization" Multiplicity="1" />
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="People">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Prepod_Employee">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -304,6 +348,18 @@
             </Principal>
             <Dependent Role="Specialnost">
               <PropertyRef Name="Shifr" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_People">
+          <End Role="People" Type="Self.People" Multiplicity="0..1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="id_people" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -347,6 +403,7 @@
         </Association>
         <EntityContainer Name="Хранилище UchPr_Basharova_321ModelContainer">
           <EntitySet Name="Akademiki" EntityType="Self.Akademiki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Authorization" EntityType="Self.Authorization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country_Basharova" EntityType="Self.Country_Basharova" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Discipline" EntityType="Self.Discipline" Schema="dbo" store:Type="Tables" />
@@ -354,6 +411,7 @@
           <EntitySet Name="Exam" EntityType="Self.Exam" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Fakultet" EntityType="Self.Fakultet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kafedra" EntityType="Self.Kafedra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="People" EntityType="Self.People" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Prepod" EntityType="Self.Prepod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Specialnost" EntityType="Self.Specialnost" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
@@ -404,6 +462,10 @@
             <End Role="Kafedra" EntitySet="Kafedra" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
+          <AssociationSet Name="FK_Employee_People" Association="Self.FK_Employee_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
           <AssociationSet Name="FK_Exam_Discipline" Association="Self.FK_Exam_Discipline">
             <End Role="Discipline" EntitySet="Discipline" />
             <End Role="Exam" EntitySet="Exam" />
@@ -424,6 +486,10 @@
             <End Role="Fakultet" EntitySet="Fakultet" />
             <End Role="Kafedra" EntitySet="Kafedra" />
           </AssociationSet>
+          <AssociationSet Name="FK_People_Authorization" Association="Self.FK_People_Authorization">
+            <End Role="Authorization" EntitySet="Authorization" />
+            <End Role="People" EntitySet="People" />
+          </AssociationSet>
           <AssociationSet Name="FK_Prepod_Employee" Association="Self.FK_Prepod_Employee">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Prepod" EntitySet="Prepod" />
@@ -431,6 +497,10 @@
           <AssociationSet Name="FK_Specialnost_Kafedra" Association="Self.FK_Specialnost_Kafedra">
             <End Role="Kafedra" EntitySet="Kafedra" />
             <End Role="Specialnost" EntitySet="Specialnost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_People" Association="Self.FK_Student_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="Student" EntitySet="Student" />
           </AssociationSet>
           <AssociationSet Name="FK_Student_Specialnost" Association="Self.FK_Student_Specialnost">
             <End Role="Specialnost" EntitySet="Specialnost" />
@@ -445,8 +515,7 @@
             <End Role="Zayavka" EntitySet="Zayavka" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UchPr_Basharova_321Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -506,6 +575,8 @@
           <NavigationProperty Name="Ingener" Relationship="Self.FK_Ingener_Employee" FromRole="Employee" ToRole="Ingener" />
           <NavigationProperty Name="Prepod" Relationship="Self.FK_Prepod_Employee" FromRole="Employee" ToRole="Prepod" />
           <NavigationProperty Name="ZavKafedra" Relationship="Self.FK_ZavKafedra_Employee" FromRole="Employee" ToRole="ZavKafedra" />
+          <Property Name="id_people" Type="Int32" />
+          <NavigationProperty Name="People" Relationship="UchPr_Basharova_321Model.FK_Employee_People" FromRole="Employee" ToRole="People" />
         </EntityType>
         <EntityType Name="Exam">
           <Key>
@@ -572,6 +643,8 @@
           <Property Name="Fam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Exam" Relationship="Self.FK_Exam_Student" FromRole="Student" ToRole="Exam" />
           <NavigationProperty Name="Specialnost" Relationship="Self.FK_Student_Specialnost" FromRole="Student" ToRole="Specialnost" />
+          <Property Name="id_people" Type="Int32" />
+          <NavigationProperty Name="People" Relationship="UchPr_Basharova_321Model.FK_Student_People" FromRole="Student" ToRole="People" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -873,7 +946,79 @@
             <End Role="Specialnost" EntitySet="Specialnost" />
             <End Role="Zayavka" EntitySet="Zayavka" />
           </AssociationSet>
+          <EntitySet Name="Authorization" EntityType="UchPr_Basharova_321Model.Authorization" />
+          <EntitySet Name="People" EntityType="UchPr_Basharova_321Model.People" />
+          <AssociationSet Name="FK_People_Authorization" Association="UchPr_Basharova_321Model.FK_People_Authorization">
+            <End Role="Authorization" EntitySet="Authorization" />
+            <End Role="People" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_People" Association="UchPr_Basharova_321Model.FK_Employee_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_People" Association="UchPr_Basharova_321Model.FK_Student_People">
+            <End Role="People" EntitySet="People" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Authorization">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="People" Relationship="UchPr_Basharova_321Model.FK_People_Authorization" FromRole="Authorization" ToRole="People" />
+        </EntityType>
+        <EntityType Name="People">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="otche_nash" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Authorization" Relationship="UchPr_Basharova_321Model.FK_People_Authorization" FromRole="People" ToRole="Authorization" />
+          <NavigationProperty Name="Employee" Relationship="UchPr_Basharova_321Model.FK_Employee_People" FromRole="People" ToRole="Employee" />
+          <NavigationProperty Name="Student" Relationship="UchPr_Basharova_321Model.FK_Student_People" FromRole="People" ToRole="Student" />
+        </EntityType>
+        <Association Name="FK_People_Authorization">
+          <End Type="UchPr_Basharova_321Model.Authorization" Role="Authorization" Multiplicity="1" />
+          <End Type="UchPr_Basharova_321Model.People" Role="People" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Authorization">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="People">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_People">
+          <End Type="UchPr_Basharova_321Model.People" Role="People" Multiplicity="0..1" />
+          <End Type="UchPr_Basharova_321Model.Employee" Role="Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="id_people" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_People">
+          <End Type="UchPr_Basharova_321Model.People" Role="People" Multiplicity="0..1" />
+          <End Type="UchPr_Basharova_321Model.Student" Role="Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="id_people" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -927,6 +1072,7 @@
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="UchPr_Basharova_321Model.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="id_people" ColumnName="id_people" />
                 <ScalarProperty Name="Numder" ColumnName="Numder" />
                 <ScalarProperty Name="Shifr" ColumnName="Shifr" />
                 <ScalarProperty Name="Fam" ColumnName="Fam" />
@@ -987,6 +1133,7 @@
           <EntitySetMapping Name="Student">
             <EntityTypeMapping TypeName="UchPr_Basharova_321Model.Student">
               <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="id_people" ColumnName="id_people" />
                 <ScalarProperty Name="RegNumber" ColumnName="RegNumber" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Fam" ColumnName="Fam" />
@@ -1074,6 +1221,26 @@
               <MappingFragment StoreEntitySet="ZavKafedra">
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="Stazh" ColumnName="Stazh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Authorization">
+            <EntityTypeMapping TypeName="UchPr_Basharova_321Model.Authorization">
+              <MappingFragment StoreEntitySet="Authorization">
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="UchPr_Basharova_321Model.People">
+              <MappingFragment StoreEntitySet="People">
+                <ScalarProperty Name="otche_nash" ColumnName="otche_nash" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

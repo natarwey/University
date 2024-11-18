@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="56f0171cf9d743cb991df47bb4247a57" Name="Diagram1">
+      <Diagram DiagramId="56f0171cf9d743cb991df47bb4247a57" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="UchPr_Basharova_321Model.Akademiki" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UchPr_Basharova_321Model.Country" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UchPr_Basharova_321Model.Country_Basharova" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
@@ -37,6 +37,11 @@
         <AssociationConnector Association="UchPr_Basharova_321Model.FK_Specialnost_Kafedra" ManuallyRouted="false" />
         <AssociationConnector Association="UchPr_Basharova_321Model.FK_Student_Specialnost" ManuallyRouted="false" />
         <AssociationConnector Association="UchPr_Basharova_321Model.FK_Zayavka_Specialnost" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UchPr_Basharova_321Model.Authorization" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="UchPr_Basharova_321Model.People" Width="1.5" PointX="3" PointY="11.625" />
+        <AssociationConnector Association="UchPr_Basharova_321Model.FK_People_Authorization" />
+        <AssociationConnector Association="UchPr_Basharova_321Model.FK_Employee_People" />
+        <AssociationConnector Association="UchPr_Basharova_321Model.FK_Student_People" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

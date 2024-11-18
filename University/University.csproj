@@ -95,6 +95,9 @@
     <Compile Include="Data\Animal_Basharova.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data\Authorization.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Data\Country.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -140,6 +143,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\People.cs">
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Prepod.cs">
       <DependentUpon>Model.tt</DependentUpon>

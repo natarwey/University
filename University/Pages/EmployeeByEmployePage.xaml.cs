@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -18,15 +19,15 @@ using University.Data;
 namespace University.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для DisciplinesByEmployePage.xaml
+    /// Логика взаимодействия для EmployeeByEmployePage.xaml
     /// </summary>
-    public partial class DisciplinesByEmployePage : Page
+    public partial class EmployeeByEmployePage : Page
     {
         private static DataBaseContext _connection = new DataBaseContext();
-        private Discipline _discipline;
-        private readonly Employe _employe;
+        private Employe _employe;
+        private readonly People _people;
 
-        public DisciplinesByEmployePage(Employe employe)
+        public EmployeeByEmployePage(Employe employe)
         {
             InitializeComponent();
             _employe = employe;
@@ -34,57 +35,59 @@ namespace University.Pages
 
         private void Load_Student(object sender, RoutedEventArgs e)
         {
-            var disp = _connection.Discipline
-                .Where(x => _employe.id == x.id_employe)
+            var emp = _connection.Employe
+                .Where(x => _employe.id == x.id_department)
                 .ToArray();
 
 
-            dataDiscipline.ItemsSource = disp.Select(x => new DisciplineViwe
+            dataEmploye.ItemsSource = emp.Select(x => new EmployeeViwe
             {
                 id = x.id,
-                code = x.code,
-                name = x.name,
-                hours = $"{x.size}ч.",
-                kafedra = x.Specialization.Department.name
+                fio = x.People.Fio,
+                salary = x.salary,
+                post = x.post,
+                stazh = x.stazh,
+                department = x.Department.name
             });
         }
 
         private void SerchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var disp = _connection.Discipline
-                .Where(x => _employe.id == x.id_employe)
-                .Where(x => x.name.ToUpper().Contains(SerchBox.Text.ToUpper()))
+            var emp = _connection.Employe
+                .Where(x => _employe.id == x.id_department)
+                .Where(x => x.People.Fio.ToUpper().Contains(SerchBox.Text.ToUpper()))
                 .ToArray();
 
 
-            dataDiscipline.ItemsSource = disp.Select(x => new DisciplineViwe
+            dataEmploye.ItemsSource = emp.Select(x => new EmployeeViwe
             {
                 id = x.id,
-                code = x.code,
-                name = x.name,
-                hours = $"{x.size}ч.",
-                kafedra = x.Specialization.Department.name
+                fio = x.People.Fio,
+                salary = x.salary,
+                post = x.post,
+                stazh = x.stazh,
+                department = x.Department.name
             });
         }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DisciplinesAddEditPage(null, _employe));
+            NavigationService.Navigate(new EmployeeAddEditPage(null, _people));
         }
 
         private void DeletedButton_Click(object sender, RoutedEventArgs e)
         {
-            if(_discipline is null)
+            if(_employe is null)
             {
                 MessageBox.Show("Не выбрана дисциплина!");
             }
             else
             {
-                var exams = _connection.Exam.Where(x => x.id_distcipline == _discipline.id).ToList();
+                var exams = _connection.Exam.Where(x => x.id_distcipline == _employe.id).ToList();
 
-                _connection.ExamResult.RemoveRange(exams.SelectMany(x => x.ExamResult));
-                _connection.Exam.RemoveRange(exams);
-                _connection.Discipline.Remove(_discipline);
+                //_connection.ExamResult.RemoveRange(exams.SelectMany(x => x.ExamResult));
+                //_connection.Exam.RemoveRange(exams);
+                _connection.Employe.Remove(_employe);
                 MessageBox.Show("Удаление выполнено!");
 
                 // TODO а может что-то другое
@@ -94,35 +97,34 @@ namespace University.Pages
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            if(_discipline is null)
+            if(_employe is null)
             {
                 MessageBox.Show("Выберите дисциплину!");
             }
             else
             {
-                NavigationService.Navigate(new DisciplinesAddEditPage(_discipline, _employe));
+                NavigationService.Navigate(new EmployeeAddEditPage(_employe, _people));
             }
         }
 
-        private void dataDiscipline_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void dataEmploye_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataGrid dataGrid = sender as DataGrid;
-            var rowView = dataGrid.SelectedItem as DisciplineViwe;
+            var rowView = dataGrid.SelectedItem as EmployeeViwe;
             if (rowView is null)
                 return;
-            _discipline = _connection.Discipline.FirstOrDefault(x => x.id == rowView.id);
+            _employe = _connection.Employe.FirstOrDefault(x => x.id == rowView.id);
         }
 
-        private class DisciplineViwe
+        private class EmployeeViwe
         {
             public int id { get; set; }
-            public string name { get; set; }
-            public string code { get; set; }
-            public string hours { get; set; }
-            public string kafedra { get; set; }
-            public string groupName { get; set; }
+            public string fio { get; set; }
+            public long salary { get; set; }
+            public string post { get; set; }
+            public int stazh { get; set; }
+            public string department { get; set; }
         }
-
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack();

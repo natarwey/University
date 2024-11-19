@@ -89,65 +89,68 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Data\DataBaseContext.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataBaseContext.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\DataBaseContext.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataBaseContext.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Data\DataBaseContext.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataBaseContext.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Data\Department.cs">
-      <DependentUpon>DataBaseContext.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Discipline.cs">
-      <DependentUpon>DataBaseContext.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Employe.cs">
-      <DependentUpon>DataBaseContext.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Exam.cs">
-      <DependentUpon>DataBaseContext.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\ExamResult.cs">
-      <DependentUpon>DataBaseContext.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Group.cs">
-      <DependentUpon>DataBaseContext.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
     <Compile Include="Data\People.cs">
-      <DependentUpon>DataBaseContext.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Specialization.cs">
-      <DependentUpon>DataBaseContext.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Student.cs">
-      <DependentUpon>DataBaseContext.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\sysdiagrams.cs">
-      <DependentUpon>DataBaseContext.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Data\Teacher.cs">
-      <DependentUpon>DataBaseContext.tt</DependentUpon>
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EmployeeAddEditPage.xaml.cs">
+      <DependentUpon>EmployeeAddEditPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DisciplinesAddEditPage.xaml.cs">
       <DependentUpon>DisciplinesAddEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EmployeeByEmployePage.xaml.cs">
+      <DependentUpon>EmployeeByEmployePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DisciplinesByEmployePage.xaml.cs">
       <DependentUpon>DisciplinesByEmployePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ExamPage.xaml.cs">
       <DependentUpon>ExamPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\EditEmployeeWindow.xaml.cs">
-      <DependentUpon>EditEmployeeWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MainPageByStudent.xaml.cs">
       <DependentUpon>MainPageByStudent.xaml</DependentUpon>
@@ -175,7 +178,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\EmployeeAddEditPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\DisciplinesAddEditPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\EmployeeByEmployePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -188,14 +199,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\DisciplinesByStudentPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\EditEmployeeWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\EmployeesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,9 +225,6 @@
     <Compile Include="Pages\DisciplinesByStudentPage.xaml.cs">
       <DependentUpon>DisciplinesByStudentPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EmployeesPage.xaml.cs">
-      <DependentUpon>EmployeesPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\MainPageByEmploye.xaml.cs">
       <DependentUpon>MainPageByEmploye.xaml</DependentUpon>
     </Compile>
@@ -245,12 +245,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="Data\DataBaseContext.edmx">
+    <EntityDeploy Include="Data\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataBaseContext.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Data\DataBaseContext.edmx.diagram">
-      <DependentUpon>DataBaseContext.edmx</DependentUpon>
+    <None Include="Data\Model.edmx.diagram">
+      <DependentUpon>Model.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -265,15 +265,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\DataBaseContext.Context.tt">
+    <Content Include="Data\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataBaseContext.edmx</DependentUpon>
-      <LastGenOutput>DataBaseContext.Context.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Data\DataBaseContext.tt">
+    <Content Include="Data\Model.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataBaseContext.edmx</DependentUpon>
-      <LastGenOutput>DataBaseContext.cs</LastGenOutput>
+      <DependentUpon>Model.edmx</DependentUpon>
+      <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

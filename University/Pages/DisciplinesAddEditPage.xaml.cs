@@ -40,7 +40,6 @@ namespace University.Pages
             SpecializBox.DisplayMemberPath = "Name";
             if (_discipline != null)
             {
-                // TODO заполнить данные
                 TextBoxName.Text = "Редактирование дисциплины";
                 NameBox.Text = _discipline.name;
                 SizeBox.Text = _discipline.size.ToString();
@@ -69,7 +68,7 @@ namespace University.Pages
             {
                 if (_discipline is null)
                 {
-                    // когдла создание
+                    // когда создание
                     _discipline = new Discipline();
                     _discipline.code = CodeBox.Text;
                     _discipline.name = NameBox.Text;
@@ -87,7 +86,6 @@ namespace University.Pages
                 }
                 else
                 {
-                    // TODO надо провверить
                     // когда редактирование
                     _discipline.code = CodeBox.Text;
                     _discipline.name = NameBox.Text;

@@ -24,15 +24,16 @@ namespace University.Pages
         private static DataBaseContext _connection = new DataBaseContext();
         private readonly Employe _employer;
 
-        public MainPageByEmploye(Employe employer)
+        public MainPageByEmploye(Employe employer, People people)
         {
-            InitializeComponent();
             _employer = employer;
+            InitializeComponent();
+            lableNameStudent.Content = $"{people.Fio}";
         }
 
         private void btnEmployees_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new EmployeesPage());
+            NavigationService.Navigate(new EmployeeByEmployePage(_employer));
         }
 
         private void btnDepartments_Click(object sender, RoutedEventArgs e)
@@ -43,6 +44,11 @@ namespace University.Pages
         private void btnDisciplines_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new DisciplinesByEmployePage(_employer));
+        }
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+            NavigationService.RemoveBackEntry();
         }
     }
 }

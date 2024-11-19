@@ -5,18 +5,30 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:University.Pages"
       mc:Ignorable="d" 
-      Title="Дисциплины" Height="500" Width="600"
+      Title="Дисциплины" Height="450" Width="800"
       Loaded="Load_Student">
 
-    <Grid Margin="0,0,0,0">
-        <TextBlock x:Name="TextBoxName" Text="Страница дисциплин" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,53,0,0"/>
-        <TextBox x:Name="NameBox" HorizontalAlignment="Left" Margin="300,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="CodeBox" HorizontalAlignment="Left" Margin="300,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="SizeBox" HorizontalAlignment="Left" Margin="300,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="SizeBox_TextChanged"/>
-        <ComboBox x:Name="SpecializBox" HorizontalAlignment="Left" Margin="300,250,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="SaveButton" Content="Сохранить" HorizontalAlignment="Left" Margin="360,389,0,0" VerticalAlignment="Top" Height="38" Width="125" Click="SaveButton_Click"/>
-        <Border BorderBrush="Black" BorderThickness="1">
-            <Button x:Name="BackButton" Content="Button" HorizontalAlignment="Left" Height="46" Margin="486,37,0,0" VerticalAlignment="Top" Width="70" Click="BackButton_Click"/>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF1F0040" Offset="1"/>
+                <GradientStop Color="#FFDED0EC" Offset="0.71"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <TextBlock x:Name="TextBoxName" Text="Введите название" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,120,425,0"/>
+        <TextBlock x:Name="TextBoxCode" Text="Введите код" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,170,425,0"/>
+        <TextBlock x:Name="TextBoxSize" Text="Введите количество часов" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,220,425,0"/>
+        <TextBlock x:Name="TextBoxSpec" Text="Выберите отделение" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,270,425,0"/>
+
+        <TextBox x:Name="NameBox" HorizontalAlignment="Left" Margin="425,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <TextBox x:Name="CodeBox" HorizontalAlignment="Left" Margin="425,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <TextBox x:Name="SizeBox" HorizontalAlignment="Left" Margin="425,220,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" TextChanged="SizeBox_TextChanged"/>
+        <ComboBox x:Name="SpecializBox" HorizontalAlignment="Left" Margin="425,270,0,0" VerticalAlignment="Top" Width="150"/>
+        <Button x:Name="SaveButton" Content="Сохранить" Background="White" BorderBrush="#FF210242" Foreground="#FF210242" Height="40" Width="120" Click="SaveButton_Click" VerticalAlignment="Bottom" Margin="0,0,0,70"/>
+
+        <Border BorderThickness="1" Margin="0,-13,0,13">
+            <Button x:Name="BackButton" Content="Назад" Background="#FFB6A0CC" BorderBrush="Black" Foreground="Black" Height="40" Width="90" HorizontalAlignment="Left" Margin="690,30,0,0" VerticalAlignment="Top" Click="BackButton_Click"/>
         </Border>
     </Grid>
 </Page>

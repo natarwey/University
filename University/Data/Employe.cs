@@ -25,9 +25,9 @@ namespace University.Data
         public int id_people { get; set; }
         public long salary { get; set; }
         public string post { get; set; }
-        public int id_department { get; set; }
+        public Nullable<int> id_department { get; set; }
         public int stazh { get; set; }
-        public int id_teacher { get; set; }
+        public Nullable<int> id_teacher { get; set; }
     
         public virtual Department Department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

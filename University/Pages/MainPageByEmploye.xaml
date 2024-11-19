@@ -5,11 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:University.Pages"
       mc:Ignorable="d" 
-      Title="Главная страница" Height="200" Width="300">
+      Title="Главная страница" Height="450" Width="800">
 
     <Grid Background="White">
-        <Button x:Name="btnEmployees" Content="Сотрудники" HorizontalAlignment="Left" Margin="10,20,0,0" VerticalAlignment="Top" Width="120" Click="btnEmployees_Click"/>
-        <Button x:Name="btnDepartments" Content="Кафедры" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Width="120" Click="btnDepartments_Click"/>
-        <Button x:Name="btnDisciplines" Content="Дисциплины" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="120" Click="btnDisciplines_Click"/>
+        <Label x:Name="lableNameStudent" Content="Label" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.543,0.536" />
+        <Button x:Name="btnEmployees" Content="Сотрудники" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="120" Click="btnEmployees_Click"/>
+        <Button x:Name="btnDepartments" Content="Кафедры" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Width="120" Click="btnDepartments_Click"/>
+        <Button x:Name="btnDisciplines" Content="Дисциплины" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Width="120" Click="btnDisciplines_Click"/>
+
+        <Border BorderThickness="1" Margin="0,-13,0,13">
+            <Button x:Name="BackButton" Content="Назад" Background="#FFB6A0CC" BorderBrush="Black" Foreground="Black" Height="40" Width="90" HorizontalAlignment="Left" Margin="690,30,0,0" VerticalAlignment="Top" Click="BackButton_Click"/>
+        </Border>
     </Grid>
 </Page>

@@ -34,19 +34,7 @@ namespace University.Pages
 
         private void Load_Student(object sender, RoutedEventArgs e)
         {
-            var disp = _connection.Discipline.Where(x=>x.id_specialization == _group.id_specialization).Select(x => new
-            {
-                Code = x.code,
-                Name = x.name,
-                Hours = $"{x.size}ч.",
-                Kafedra =x.Specialization.Department.name
-            });
-            dataDiscipline.ItemsSource = disp.ToList();
-        }
-
-        private void SerchBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var disp = _connection.Discipline.Where(x => x.id_specialization == _group.id_specialization).Where(x=>x.name.ToUpper().Contains(SerchBox.Text.ToUpper())).Select(x => new
+            var disp = _connection.Discipline.Where(x => x.id_specialization == _group.id_specialization).Select(x => new
             {
                 Code = x.code,
                 Name = x.name,
@@ -54,6 +42,24 @@ namespace University.Pages
                 Kafedra = x.Specialization.Department.name
             });
             dataDiscipline.ItemsSource = disp.ToList();
+        }
+
+        private void SerchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var disp = _connection.Discipline.Where(x => x.id_specialization == _group.id_specialization).Where(x => x.name.ToUpper().Contains(SerchBox.Text.ToUpper())).Select(x => new
+            {
+                Code = x.code,
+                Name = x.name,
+                Hours = $"{x.size}ч.",
+                Kafedra = x.Specialization.Department.name
+            });
+            dataDiscipline.ItemsSource = disp.ToList();
+        }
+         
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+            NavigationService.RemoveBackEntry();
         }
     }
 }

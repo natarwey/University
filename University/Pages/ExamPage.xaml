@@ -5,12 +5,23 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:University.Pages"
       mc:Ignorable="d" 
-      Title="Дисциплины" Height="500" Width="600"
+      Title="Дисциплины" Height="450" Width="800"
       Loaded="Load_Student">
     
-    <Grid Margin="0,0,0,0">
-        <TextBlock Text="Страница дисциплин" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,53,0,0"/>
-        <DataGrid x:Name="dataExam" HorizontalAlignment="Left" Height="156" Margin="49,120,0,0" VerticalAlignment="Top" Width="486" d:ItemsSource="{d:SampleData ItemCount=5}"/>
-        <TextBox x:Name="SerchBox" HorizontalAlignment="Left" Margin="122,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="SerchBox_TextChanged"/>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF1F0040" Offset="1"/>
+                <GradientStop Color="#FFDED0EC" Offset="0.71"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
+        <TextBlock x:Name="TextBoxName" Text="Экзамены" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0"/>
+        <DataGrid x:Name="dataExam" HorizontalAlignment="Center" Height="235" Width="600" VerticalAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=10}"/>
+        <TextBox x:Name="SerchBox" HorizontalAlignment="Left" Margin="100,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" TextChanged="SerchBox_TextChanged"/>
+
+        <Border BorderThickness="1" Margin="0,-13,0,13">
+            <Button x:Name="BackButton" Content="Назад" Background="#FFB6A0CC" BorderBrush="Black" Foreground="Black" Height="40" Width="90" HorizontalAlignment="Left" Margin="690,30,0,0" VerticalAlignment="Top" Click="BackButton_Click"/>
+        </Border>
     </Grid>
 </Page>

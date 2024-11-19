@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище UchPrV2_Basharova_321Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище DataBaseContextModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="id" />
@@ -16,7 +16,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="code" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="size" Type="int" Nullable="false" />
@@ -31,9 +31,9 @@
           <Property Name="id_people" Type="int" Nullable="false" />
           <Property Name="salary" Type="bigint" Nullable="false" />
           <Property Name="post" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="id_department" Type="int" Nullable="false" />
+          <Property Name="id_department" Type="int" />
           <Property Name="stazh" Type="int" Nullable="false" />
-          <Property Name="id_teacher" Type="int" Nullable="false" />
+          <Property Name="id_teacher" Type="int" />
         </EntityType>
         <EntityType Name="Exam">
           <Key>
@@ -69,7 +69,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="Fio" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="role" Type="int" Nullable="false" />
           <Property Name="login" Type="varchar" MaxLength="50" Nullable="false" />
@@ -136,7 +136,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employe_Department">
-          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Department">
@@ -160,7 +160,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employe_Teacher">
-          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
           <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Teacher">
@@ -279,7 +279,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище UchPrV2_Basharova_321ModelContainer">
+        <EntityContainer Name="Хранилище DataBaseContextModelContainer">
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Discipline" EntityType="Self.Discipline" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employe" EntityType="Self.Employe" Schema="dbo" store:Type="Tables" />
@@ -348,10 +348,11 @@
             <End Role="Student" EntitySet="Student" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="UchPrV2_Basharova_321Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DataBaseContextModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="id" />
@@ -383,9 +384,9 @@
           <Property Name="id_people" Type="Int32" Nullable="false" />
           <Property Name="salary" Type="Int64" Nullable="false" />
           <Property Name="post" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="id_department" Type="Int32" Nullable="false" />
+          <Property Name="id_department" Type="Int32" />
           <Property Name="stazh" Type="Int32" Nullable="false" />
-          <Property Name="id_teacher" Type="Int32" Nullable="false" />
+          <Property Name="id_teacher" Type="Int32" />
           <NavigationProperty Name="Department" Relationship="Self.FK_Employe_Department" FromRole="Employe" ToRole="Department" />
           <NavigationProperty Name="Discipline" Relationship="Self.FK_Discipline_Employe" FromRole="Employe" ToRole="Discipline" />
           <NavigationProperty Name="People" Relationship="Self.FK_Employe_People" FromRole="Employe" ToRole="People" />
@@ -435,7 +436,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="Fio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="role" Type="Int32" Nullable="false" />
           <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -487,7 +488,7 @@
           <NavigationProperty Name="Employe" Relationship="Self.FK_Employe_Teacher" FromRole="Teacher" ToRole="Employe" />
         </EntityType>
         <Association Name="FK_Employe_Department">
-          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Department">
@@ -559,7 +560,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employe_Teacher">
-          <End Role="Teacher" Type="Self.Teacher" Multiplicity="1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
           <End Role="Employe" Type="Self.Employe" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Teacher">
@@ -728,9 +729,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище UchPrV2_Basharova_321ModelContainer" CdmEntityContainer="DataBaseContext">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DataBaseContextModelContainer" CdmEntityContainer="DataBaseContext">
           <EntitySetMapping Name="Department">
-            <EntityTypeMapping TypeName="UchPrV2_Basharova_321Model.Department">
+            <EntityTypeMapping TypeName="DataBaseContextModel.Department">
               <MappingFragment StoreEntitySet="Department">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -738,7 +739,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Discipline">
-            <EntityTypeMapping TypeName="UchPrV2_Basharova_321Model.Discipline">
+            <EntityTypeMapping TypeName="DataBaseContextModel.Discipline">
               <MappingFragment StoreEntitySet="Discipline">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -750,7 +751,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employe">
-            <EntityTypeMapping TypeName="UchPrV2_Basharova_321Model.Employe">
+            <EntityTypeMapping TypeName="DataBaseContextModel.Employe">
               <MappingFragment StoreEntitySet="Employe">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_people" ColumnName="id_people" />
@@ -763,7 +764,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Exam">
-            <EntityTypeMapping TypeName="UchPrV2_Basharova_321Model.Exam">
+            <EntityTypeMapping TypeName="DataBaseContextModel.Exam">
               <MappingFragment StoreEntitySet="Exam">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
@@ -776,7 +777,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ExamResult">
-            <EntityTypeMapping TypeName="UchPrV2_Basharova_321Model.ExamResult">
+            <EntityTypeMapping TypeName="DataBaseContextModel.ExamResult">
               <MappingFragment StoreEntitySet="ExamResult">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_exam" ColumnName="id_exam" />
@@ -786,7 +787,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Group">
-            <EntityTypeMapping TypeName="UchPrV2_Basharova_321Model.Group">
+            <EntityTypeMapping TypeName="DataBaseContextModel.Group">
               <MappingFragment StoreEntitySet="Group">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="code" ColumnName="code" />
@@ -796,7 +797,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="People">
-            <EntityTypeMapping TypeName="UchPrV2_Basharova_321Model.People">
+            <EntityTypeMapping TypeName="DataBaseContextModel.People">
               <MappingFragment StoreEntitySet="People">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Fio" ColumnName="Fio" />
@@ -807,7 +808,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Specialization">
-            <EntityTypeMapping TypeName="UchPrV2_Basharova_321Model.Specialization">
+            <EntityTypeMapping TypeName="DataBaseContextModel.Specialization">
               <MappingFragment StoreEntitySet="Specialization">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -817,7 +818,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Student">
-            <EntityTypeMapping TypeName="UchPrV2_Basharova_321Model.Student">
+            <EntityTypeMapping TypeName="DataBaseContextModel.Student">
               <MappingFragment StoreEntitySet="Student">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="id_people" ColumnName="id_people" />
@@ -827,7 +828,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="UchPrV2_Basharova_321Model.sysdiagrams">
+            <EntityTypeMapping TypeName="DataBaseContextModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -838,7 +839,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Teacher">
-            <EntityTypeMapping TypeName="UchPrV2_Basharova_321Model.Teacher">
+            <EntityTypeMapping TypeName="DataBaseContextModel.Teacher">
               <MappingFragment StoreEntitySet="Teacher">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="zvanie" ColumnName="zvanie" />

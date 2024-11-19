@@ -38,7 +38,12 @@ namespace University.Pages
 
         private void btnExam_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DisciplinesByStudentPage(_student));
+            NavigationService.Navigate(new ExamPage(_student));
+        }
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
+            NavigationService.RemoveBackEntry();
         }
     }
 }

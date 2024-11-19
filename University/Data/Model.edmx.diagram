@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cfb5ee262686489d800e446b0d0df8d7" Name="Diagram1">
+        <EntityTypeShape EntityType="DataBaseContextModel.Department" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseContextModel.Discipline" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseContextModel.Employe" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseContextModel.Exam" Width="1.5" PointX="7.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseContextModel.ExamResult" Width="1.5" PointX="9.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseContextModel.Group" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseContextModel.People" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseContextModel.Specialization" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseContextModel.Student" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseContextModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DataBaseContextModel.Teacher" Width="1.5" PointX="0.75" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="DataBaseContextModel.FK_Employe_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseContextModel.FK_Specialization_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseContextModel.FK_Discipline_Employe" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseContextModel.FK_Discipline_Specialization" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseContextModel.FK_Exam_Discipline" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseContextModel.FK_Employe_People" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseContextModel.FK_Employe_Teacher" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseContextModel.FK_Exam_Employe" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseContextModel.FK_Exam_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseContextModel.FK_ExamResult_Exam" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseContextModel.FK_ExamResult_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseContextModel.FK_Group_Specialization" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseContextModel.FK_Student_Group" ManuallyRouted="false" />
+        <AssociationConnector Association="DataBaseContextModel.FK_Student_People" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

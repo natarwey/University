@@ -58,7 +58,7 @@ namespace University.Pages
 
                 var employe = _connection.Employe.FirstOrDefault(x => x.id_people == people.id);
 
-                NavigationService.Navigate(new MainPageByEmploye(employe));
+                NavigationService.Navigate(new MainPageByEmploye(employe, people));
             }
         }
 

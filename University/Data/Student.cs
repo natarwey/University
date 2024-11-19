@@ -17,17 +17,17 @@ namespace University.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Student()
         {
-            this.Exam = new HashSet<Exam>();
+            this.ExamResult = new HashSet<ExamResult>();
         }
     
-        public int RegNumber { get; set; }
-        public string Number { get; set; }
-        public string Fam { get; set; }
-        public Nullable<int> id_people { get; set; }
+        public int id { get; set; }
+        public int id_people { get; set; }
+        public int id_group { get; set; }
+        public Nullable<System.DateTime> end_on { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Exam> Exam { get; set; }
-        public virtual Specialnost Specialnost { get; set; }
+        public virtual ICollection<ExamResult> ExamResult { get; set; }
+        public virtual Group Group { get; set; }
         public virtual People People { get; set; }
     }
 }

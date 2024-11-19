@@ -1,0 +1,26 @@
+﻿<Page x:Class="University.Pages.DisciplinesByEmployePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:University.Pages"
+      mc:Ignorable="d" 
+      Title="Дисциплины" Height="500" Width="600"
+      Loaded="Load_Student">
+
+    <Grid Margin="0,0,0,0">
+        <TextBlock x:Name="TextBoxName" Text="Страница дисциплин" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,53,0,0"/>
+        <DataGrid x:Name="dataDiscipline" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="236" VerticalAlignment="Center" Width="520" SelectionChanged="dataDiscipline_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Path=name}" Width="90" />
+                <DataGridTextColumn Header="Код" Binding="{Binding Path=code}" Width="100" />
+                <DataGridTextColumn Header="Объём" Binding="{Binding Path=hours}" Width="100" />
+                <DataGridTextColumn Header="Отдекление" Binding="{Binding Path=kafedra}" Width="100" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="SerchBox" HorizontalAlignment="Left" Margin="122,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="SerchBox_TextChanged"/>
+        <Button x:Name="AddButton" Content="Добавить" HorizontalAlignment="Left" Height="35" Margin="10,455,0,0" VerticalAlignment="Top" Width="136" Click="AddButton_Click"/>
+        <Button x:Name="EditButton" Content="Изменить" HorizontalAlignment="Left" Margin="182,455,0,0" VerticalAlignment="Top" Height="35" Width="149" Click="EditButton_Click"/>
+        <Button x:Name="DeletedButton" Content="Удалить" HorizontalAlignment="Left" Margin="378,455,0,0" VerticalAlignment="Top" Height="35" Width="135" Click="DeletedButton_Click"/>
+    </Grid>
+</Page>

@@ -19,51 +19,46 @@ namespace University.Pages
 {
     public partial class AuthorisationPage : Page
     {
-        private List<Employee> _employees;
+        private static DataBaseContext _connection = new DataBaseContext();
         public AuthorisationPage()
         {
             InitializeComponent();
-            _employees = DatabaseHelper.GetEmployees();
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
-            string login = txtLogin.Text;
-            int password = 0;
+            var login = txtLogin.Text;
+            var password = txtPassword.Password;
+
+            // TODO можно прикрутить Regex для проверки заполнения полей
+
             if (String.IsNullOrEmpty(txtLogin.Text) || String.IsNullOrEmpty(txtPassword.Password))
             {
                 MessageBox.Show("Заполните все поля!");
                 return;
             }
 
-            Employee newEmp = _employees.FirstOrDefault(x => x.Fam == login);
-            if (newEmp == null)
+            var people = _connection.People.FirstOrDefault(x => x.login == login && x.password == password);
+            if (people is null)
             {
-                MessageBox.Show("Сотрудник с данным логином не найден.");
-                txtLogin.Clear();
+                MessageBox.Show("Не правильный логин или пароль!");
                 txtPassword.Clear();
                 return;
             }
 
-            try
+            if(people.role == 1)
             {
-                password = Convert.ToInt32(txtPassword.Password);
-            }
-            catch
-            {
-                MessageBox.Show("Пароль должен быть числом!");
-                txtPassword.Password = "";
-                return;
-            }
+                var student = _connection.Student.FirstOrDefault(x => x.id_people == people.id);
 
-            if (password == newEmp.Numder)
-            {
-                NavigationService.Navigate(new MainPage(newEmp));
+                NavigationService.Navigate(new MainPageByStudent(student, people));
+
             }
-            else
+            else if(people.role == 2)
             {
-                MessageBox.Show("Неверный пароль.");
-                txtPassword.Password = "";
+
+                var employe = _connection.Employe.FirstOrDefault(x => x.id_people == people.id);
+
+                NavigationService.Navigate(new MainPageByEmploye(employe));
             }
         }
 

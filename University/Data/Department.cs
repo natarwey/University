@@ -12,23 +12,21 @@ namespace University.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Specialnost
+    public partial class Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Specialnost()
+        public Department()
         {
-            this.Student = new HashSet<Student>();
-            this.Zayavka = new HashSet<Zayavka>();
+            this.Employe = new HashSet<Employe>();
+            this.Specialization = new HashSet<Specialization>();
         }
     
-        public string Numder { get; set; }
-        public string Direction { get; set; }
-        public string Shifr { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
     
-        public virtual Kafedra Kafedra { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Student { get; set; }
+        public virtual ICollection<Employe> Employe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Zayavka> Zayavka { get; set; }
+        public virtual ICollection<Specialization> Specialization { get; set; }
     }
 }

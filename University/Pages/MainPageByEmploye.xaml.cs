@@ -17,15 +17,17 @@ using University.Data;
 namespace University.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
+    /// Логика взаимодействия для MainPageByEmploye.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class MainPageByEmploye : Page
     {
-        private Employee _currentEmployee = null;
-        public MainPage(Employee employee)
+        private static DataBaseContext _connection = new DataBaseContext();
+        private readonly Employe _employer;
+
+        public MainPageByEmploye(Employe employer)
         {
-            _currentEmployee = employee;
             InitializeComponent();
+            _employer = employer;
         }
 
         private void btnEmployees_Click(object sender, RoutedEventArgs e)
@@ -40,7 +42,7 @@ namespace University.Pages
 
         private void btnDisciplines_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DisciplinesPage());
+            NavigationService.Navigate(new DisciplinesByEmployePage(_employer));
         }
     }
 }

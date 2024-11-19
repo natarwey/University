@@ -12,13 +12,19 @@ namespace University.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Country
+    public partial class Teacher
     {
-        public int Id_country { get; set; }
-        public string Tittle { get; set; }
-        public string Capital { get; set; }
-        public Nullable<int> Square { get; set; }
-        public Nullable<int> Population { get; set; }
-        public string Continent { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Teacher()
+        {
+            this.Employe = new HashSet<Employe>();
+        }
+    
+        public int id { get; set; }
+        public string zvanie { get; set; }
+        public string stepen { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employe> Employe { get; set; }
     }
 }

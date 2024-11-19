@@ -20,12 +20,15 @@ namespace University.Data
             this.Exam = new HashSet<Exam>();
         }
     
-        public int Code { get; set; }
-        public Nullable<int> Volume { get; set; }
-        public string Tittle { get; set; }
-        public string Ispolnitel { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string code { get; set; }
+        public int size { get; set; }
+        public int id_specialization { get; set; }
+        public int id_employe { get; set; }
     
-        public virtual Kafedra Kafedra { get; set; }
+        public virtual Employe Employe { get; set; }
+        public virtual Specialization Specialization { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Exam> Exam { get; set; }
     }

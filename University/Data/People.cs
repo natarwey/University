@@ -17,18 +17,18 @@ namespace University.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public People()
         {
-            this.Employee = new HashSet<Employee>();
+            this.Employe = new HashSet<Employe>();
             this.Student = new HashSet<Student>();
         }
     
         public int id { get; set; }
-        public string last_name { get; set; }
-        public string first_name { get; set; }
-        public string otche_nash { get; set; }
+        public string Fio { get; set; }
+        public int role { get; set; }
+        public string login { get; set; }
+        public string password { get; set; }
     
-        public virtual Authorization Authorization { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employee { get; set; }
+        public virtual ICollection<Employe> Employe { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Student { get; set; }
     }

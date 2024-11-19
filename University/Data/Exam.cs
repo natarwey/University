@@ -14,16 +14,24 @@ namespace University.Data
     
     public partial class Exam
     {
-        public Nullable<System.DateTime> Date { get; set; }
-        public Nullable<int> Code { get; set; }
-        public Nullable<int> RegNumber { get; set; }
-        public Nullable<int> Number { get; set; }
-        public string Auditoria { get; set; }
-        public Nullable<int> Otsenka { get; set; }
-        public int Id_exam { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Exam()
+        {
+            this.ExamResult = new HashSet<ExamResult>();
+        }
+    
+        public int id { get; set; }
+        public System.DateTime date { get; set; }
+        public int id_distcipline { get; set; }
+        public int code { get; set; }
+        public string ayditory { get; set; }
+        public int id_employe { get; set; }
+        public int id_group { get; set; }
     
         public virtual Discipline Discipline { get; set; }
-        public virtual Prepod Prepod { get; set; }
-        public virtual Student Student { get; set; }
+        public virtual Employe Employe { get; set; }
+        public virtual Group Group { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ExamResult> ExamResult { get; set; }
     }
 }

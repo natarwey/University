@@ -12,20 +12,14 @@ namespace University.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class ExamResult
     {
-        public int Numder { get; set; }
-        public string Shifr { get; set; }
-        public string Fam { get; set; }
-        public string Dolzhnost { get; set; }
-        public Nullable<decimal> Zp { get; set; }
-        public Nullable<int> Shef { get; set; }
-        public Nullable<int> id_people { get; set; }
+        public int id { get; set; }
+        public int id_exam { get; set; }
+        public int id_student { get; set; }
+        public Nullable<int> result { get; set; }
     
-        public virtual Kafedra Kafedra { get; set; }
-        public virtual Ingener Ingener { get; set; }
-        public virtual Prepod Prepod { get; set; }
-        public virtual ZavKafedra ZavKafedra { get; set; }
-        public virtual People People { get; set; }
+        public virtual Exam Exam { get; set; }
+        public virtual Student Student { get; set; }
     }
 }

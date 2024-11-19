@@ -18,7 +18,7 @@ namespace University.Pages
 {
     public partial class EmployeesPage : Page
     {
-        private List<Employee> employees;
+        private List<Employe> employees;
 
         public EmployeesPage()
         {

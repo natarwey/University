@@ -1,0 +1,16 @@
+﻿<Page x:Class="University.Pages.ExamPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:University.Pages"
+      mc:Ignorable="d" 
+      Title="Дисциплины" Height="500" Width="600"
+      Loaded="Load_Student">
+    
+    <Grid Margin="0,0,0,0">
+        <TextBlock Text="Страница дисциплин" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,53,0,0"/>
+        <DataGrid x:Name="dataExam" HorizontalAlignment="Left" Height="156" Margin="49,120,0,0" VerticalAlignment="Top" Width="486" d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        <TextBox x:Name="SerchBox" HorizontalAlignment="Left" Margin="122,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="SerchBox_TextChanged"/>
+    </Grid>
+</Page>

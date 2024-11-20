@@ -7,7 +7,10 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="QRWindow" Height="450" Width="800">
+
     <Grid>
+        <Button x:Name="ShowImageButton" Content="Показать картинку" Background="#FFB6A0CC" BorderBrush="Black" Foreground="Black" Width="150" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" Click="ShowImageButton_Click"/>
+        <Image x:Name="ImageViewer" Width="300" Height="300" HorizontalAlignment="Left" VerticalAlignment="Top" Stretch="Uniform" Margin="250,50,0,0"/>
         <!--<StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
             <Button x:Name="createQrBtn" Content="Создать QR" Width="150" Height="50" Click="Button_Click"></Button>
         </StackPanel>

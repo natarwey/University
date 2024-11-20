@@ -22,6 +22,7 @@ namespace University.Pages
     public partial class ExamPage : Page
     {
         private static DataBaseContext _connection = new DataBaseContext();
+        private object _exam;
         private readonly Student _student;
         private readonly Group _group;
 
@@ -63,6 +64,16 @@ namespace University.Pages
         {
             NavigationService.GoBack();
             NavigationService.RemoveBackEntry();
+        }
+
+        private void dataExam_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid dataGrid = sender as DataGrid;
+            var rowView = dataGrid.SelectedItem as dynamic;
+            if (rowView is null)
+                return;
+            string examCode = rowView.Code;
+            _exam = _group.Exam.FirstOrDefault(x => x.code.ToString() == examCode);
         }
     }
 }

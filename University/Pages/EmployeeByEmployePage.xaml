@@ -19,11 +19,11 @@
         <TextBlock x:Name="TextBoxName" Text="Сотрудники" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0"/>
         <DataGrid x:Name="dataEmploye" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="230" VerticalAlignment="Center" Width="600" SelectionChanged="dataEmploye_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ФИО" Binding="{Binding Path=fio}" Width="90" />
+                <DataGridTextColumn Header="ФИО" Binding="{Binding Path=fio}" Width="100" />
                 <DataGridTextColumn Header="Зарплата" Binding="{Binding Path=salary}" Width="100" />
-                <DataGridTextColumn Header="Должность" Binding="{Binding Path=post}" Width="100" />
+                <DataGridTextColumn Header="Должность" Binding="{Binding Path=post}" Width="120" />
                 <DataGridTextColumn Header="Стаж" Binding="{Binding Path=stazh}" Width="100" />
-                <DataGridTextColumn Header="Кафедра" Binding="{Binding Path=department}" Width="100" />
+                <DataGridTextColumn Header="Кафедра" Binding="{Binding Path=department}" Width="175" />
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="SerchBox" HorizontalAlignment="Left" Margin="100,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" TextChanged="SerchBox_TextChanged"/>

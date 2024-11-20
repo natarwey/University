@@ -28,6 +28,19 @@ namespace University
             InitializeComponent();
         }
 
+        private void ShowImageButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Укажите путь к вашему изображению
+            string imagePath = "";
+
+            // Создаем BitmapImage и устанавливаем его как источник для Image
+            BitmapImage bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute);
+            bitmap.EndInit();
+
+            ImageViewer.Source = bitmap;
+        }
         //private void Button_Click(object sender, RoutedEventArgs e) // Кнопка создания QR кода
         //{
         //    // Ссылка на XL таблицу

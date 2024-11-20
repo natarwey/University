@@ -65,10 +65,7 @@ namespace University.Pages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             QRWindow qrWindow = new QRWindow();
-
-            // Отображаем новое окно
             qrWindow.Show();
-
         }
     }
 }

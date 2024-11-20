@@ -16,8 +16,19 @@
             </LinearGradientBrush>
         </Grid.Background>
 
+        <DataGrid x:Name="dataExam" HorizontalAlignment="Center" Height="235" VerticalAlignment="Center" Width="600" AutoGenerateColumns="False" SelectionChanged="dataExam_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="130"/>
+                <DataGridTextColumn Header="Код" Binding="{Binding Code}" Width="100"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding Date}" Width="100"/>
+                <DataGridTextColumn Header="Аудитория" Binding="{Binding Audit}" Width="100"/>
+                <DataGridTextColumn Header="Преподаватель" Binding="{Binding Prepod}" Width="165"/>
+                <DataGridTextColumn Header="Результат" Binding="{Binding Result}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
         <TextBlock x:Name="TextBoxName" Text="Экзамены" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0"/>
-        <DataGrid x:Name="dataExam" HorizontalAlignment="Center" Height="235" Width="600" VerticalAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=10}"/>
+        <!--<DataGrid x:Name="dataExam" HorizontalAlignment="Center" Height="235" Width="600" VerticalAlignment="Center" d:ItemsSource="{d:SampleData ItemCount=10}"/>-->
         <TextBox x:Name="SerchBox" HorizontalAlignment="Left" Margin="100,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" TextChanged="SerchBox_TextChanged"/>
 
         <Border BorderThickness="1" Margin="0,-13,0,13">

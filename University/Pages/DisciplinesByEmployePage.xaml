@@ -22,7 +22,7 @@
                 <DataGridTextColumn Header="Название" Binding="{Binding Path=name}" Width="130" />
                 <DataGridTextColumn Header="Код" Binding="{Binding Path=code}" Width="100" />
                 <DataGridTextColumn Header="Объём" Binding="{Binding Path=hours}" Width="100" />
-                <DataGridTextColumn Header="Отделение" Binding="{Binding Path=kafedra}" Width="300" />
+                <DataGridTextColumn Header="Отделение" Binding="{Binding Path=kafedra}" Width="265" />
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="SerchBox" HorizontalAlignment="Left" Margin="100,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" TextChanged="SerchBox_TextChanged"/>

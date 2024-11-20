@@ -22,6 +22,7 @@ namespace University.Pages
     public partial class DisciplinesByStudentPage : Page
     {
         private static DataBaseContext _connection = new DataBaseContext();
+        private Discipline _discipline;
         private readonly Student _student;
         private readonly Group _group;
 
@@ -36,15 +37,6 @@ namespace University.Pages
 
         private void Load_Student(object sender, RoutedEventArgs e)
         {
-            //var disp = _connection.Discipline.Where(x => x.id_specialization == _group.id_specialization).Select(x => new
-            //{
-            //    Code = x.code,
-            //    Name = x.name,
-            //    Hours = $"{x.size}ч.",
-            //    Kafedra = x.Specialization.Department.name
-            //});
-            //dataDiscipline.ItemsSource = disp.ToList();
-
             var disp = _connection.Discipline
                 .Where(x => _group.id_specialization == x.id_specialization)
                 .ToArray();
@@ -61,14 +53,19 @@ namespace University.Pages
 
         private void SerchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var disp = _connection.Discipline.Where(x => x.id_specialization == _group.id_specialization).Where(x => x.name.ToUpper().Contains(SerchBox.Text.ToUpper())).Select(x => new
+            var disp = _connection.Discipline
+                .Where(x => _group.id_specialization == x.id_specialization)
+                 .Where(x => x.name.ToUpper().Contains(SerchBox.Text.ToUpper()))
+                .ToArray();
+
+
+            dataDiscipline.ItemsSource = disp.Select(x => new
             {
                 Code = x.code,
                 Name = x.name,
                 Hours = $"{x.size}ч.",
                 Kafedra = x.Specialization.Department.name
             });
-            dataDiscipline.ItemsSource = disp.ToList();
         }
          
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -79,38 +76,44 @@ namespace University.Pages
 
         private void SortAscButton_Click(object sender, RoutedEventArgs e)
         {
-            //var sortedEmployees = _connection.Employe
-            //    .Where(x => _employe.id == x.id_department)
-            //    .OrderBy(x => x.salary)
-            //    .ToArray();
+            var sortedDisciplines = _connection.Discipline
+                .Where(x => _group.id_specialization == x.id_specialization)
+                .OrderBy(x => x.size)
+                .ToArray();
 
-            //dataEmploye.ItemsSource = sortedEmployees.Select(x => new EmployeeViwe
-            //{
-            //    id = x.id,
-            //    fio = x.People.Fio,
-            //    salary = x.salary,
-            //    post = x.post,
-            //    stazh = x.stazh,
-            //    department = x.Department.name
-            //});
+            dataDiscipline.ItemsSource = sortedDisciplines.Select(x => new
+            {
+                Code = x.code,
+                Name = x.name,
+                Hours = $"{x.size}ч.",
+                Kafedra = x.Specialization.Department.name
+            });
         }
 
         private void SortDescButton_Click(object sender, RoutedEventArgs e)
         {
-            //var sortedEmployees = _connection.Employe
-            //    .Where(x => _employe.id == x.id_department)
-            //    .OrderByDescending(x => x.salary)
-            //    .ToArray();
+            var sortedDisciplines = _connection.Discipline
+                .Where(x => _group.id_specialization == x.id_specialization)
+                .OrderByDescending(x => x.size)
+                .ToArray();
 
-            //dataEmploye.ItemsSource = sortedEmployees.Select(x => new EmployeeViwe
-            //{
-            //    id = x.id,
-            //    fio = x.People.Fio,
-            //    salary = x.salary,
-            //    post = x.post,
-            //    stazh = x.stazh,
-            //    department = x.Department.name
-            //});
+            dataDiscipline.ItemsSource = sortedDisciplines.Select(x => new
+            {
+                Code = x.code,
+                Name = x.name,
+                Hours = $"{x.size}ч.",
+                Kafedra = x.Specialization.Department.name
+            });
+        }
+
+        private void dataDiscipline_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataGrid dataGrid = sender as DataGrid;
+            var rowView = dataGrid.SelectedItem as dynamic;
+            if (rowView is null)
+                return;
+            int disciplineId = rowView.id;
+            _discipline = _connection.Discipline.FirstOrDefault(x => x.id == disciplineId);
         }
     }
 }

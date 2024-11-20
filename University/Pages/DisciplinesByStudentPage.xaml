@@ -19,13 +19,21 @@
         <TextBlock x:Name="TextBoxName" Text="Дисциплины" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,40,0,0"/>
         <!--<DataGrid x:Name="dataDiscipline" AutoGenerateColumns="False" HorizontalAlignment="Center" Height="230" VerticalAlignment="Center" Width="600" SelectionChanged="dataDiscipline_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Название" Binding="{Binding Path=name}" Width="90" />
+                <DataGridTextColumn Header="Название" Binding="{Binding Path=name}" Width="130" />
                 <DataGridTextColumn Header="Код" Binding="{Binding Path=code}" Width="100" />
                 <DataGridTextColumn Header="Объём" Binding="{Binding Path=hours}" Width="100" />
-                <DataGridTextColumn Header="Отделение" Binding="{Binding Path=kafedra}" Width="100" />
+                <DataGridTextColumn Header="Отделение" Binding="{Binding Path=kafedra}" Width="265" />
             </DataGrid.Columns>
         </DataGrid>-->
-        <DataGrid x:Name="dataDiscipline" HorizontalAlignment="Center" Height="235" VerticalAlignment="Center" Width="600" d:ItemsSource="{d:SampleData ItemCount=10}"/>
+        <!--<DataGrid x:Name="dataDiscipline" HorizontalAlignment="Center" Height="235" VerticalAlignment="Center" Width="600" d:ItemsSource="{d:SampleData ItemCount=10}"/>-->
+        <DataGrid x:Name="dataDiscipline" HorizontalAlignment="Center" Height="235" VerticalAlignment="Center" Width="600" AutoGenerateColumns="False" SelectionChanged="dataDiscipline_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="130"/>
+                <DataGridTextColumn Header="Код" Binding="{Binding Code}" Width="100"/>
+                <DataGridTextColumn Header="Объём" Binding="{Binding Hours}" Width="100"/>
+                <DataGridTextColumn Header="Отделение" Binding="{Binding Kafedra}" Width="265"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <TextBox x:Name="SerchBox" HorizontalAlignment="Left" Margin="100,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" TextChanged="SerchBox_TextChanged"/>
         <Button x:Name="SortAscButton" Content="↑" Background="White" BorderBrush="#FF210242" Foreground="#FF210242" Height="18" Width="20" Click="SortAscButton_Click" Margin="250,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Button x:Name="SortDescButton" Content="↓" Background="White" BorderBrush="#FF210242" Foreground="#FF210242" Height="18" Width="20" Click="SortDescButton_Click" Margin="270,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>

@@ -74,21 +74,34 @@ namespace University.Pages
 
         private void DeletedButton_Click(object sender, RoutedEventArgs e)
         {
-            if(_discipline is null)
+            try
             {
-                MessageBox.Show("Не выбрана дисциплина!");
+                if (_discipline != null)
+                {
+                    using (var context = new DataBaseContext())
+                    {
+                        var disciplineToDelete = context.Discipline.Find(_discipline.id);
+                        if (disciplineToDelete != null)
+                        {
+                            context.Discipline.Remove(disciplineToDelete);
+                            context.SaveChanges();
+                            Load_Student(sender, e);
+                            MessageBox.Show("Дисциплина удалена.", "Удача", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Дисциплина не найдена.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Выберите дисциплину.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var exams = _connection.Exam.Where(x => x.id_distcipline == _discipline.id).ToList();
-
-                _connection.ExamResult.RemoveRange(exams.SelectMany(x => x.ExamResult));
-                _connection.Exam.RemoveRange(exams);
-                _connection.Discipline.Remove(_discipline);
-                MessageBox.Show("Удаление выполнено!");
-
-                // TODO а может что-то другое
-                Load_Student(null, null);
+                MessageBox.Show($"Ошибка при удалении дисциплины: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -127,6 +140,39 @@ namespace University.Pages
         {
             NavigationService.GoBack();
             NavigationService.RemoveBackEntry();
+        }
+        private void SortAscButton_Click(object sender, RoutedEventArgs e)
+        {
+            var sortedDisciplines = _connection.Discipline
+                .Where(x => _employe.id == x.id_employe)
+                .OrderBy(x => x.size)
+                .ToArray();
+
+            dataDiscipline.ItemsSource = sortedDisciplines.Select(x => new DisciplineViwe
+            {
+                id = x.id,
+                code = x.code,
+                name = x.name,
+                hours = $"{x.size}ч.",
+                kafedra = x.Specialization.Department.name
+            });
+        }
+
+        private void SortDescButton_Click(object sender, RoutedEventArgs e)
+        {
+            var sortedDisciplines = _connection.Discipline
+                .Where(x => _employe.id == x.id_employe)
+                .OrderByDescending(x => x.size)
+                .ToArray();
+
+            dataDiscipline.ItemsSource = sortedDisciplines.Select(x => new DisciplineViwe
+            {
+                id = x.id,
+                code = x.code,
+                name = x.name,
+                hours = $"{x.size}ч.",
+                kafedra = x.Specialization.Department.name
+            });
         }
     }
 }

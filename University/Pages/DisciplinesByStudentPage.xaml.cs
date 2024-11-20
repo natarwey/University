@@ -30,18 +30,33 @@ namespace University.Pages
             InitializeComponent();
             _student = student;
             _group = student.Group;
+
+
         }
 
         private void Load_Student(object sender, RoutedEventArgs e)
         {
-            var disp = _connection.Discipline.Where(x => x.id_specialization == _group.id_specialization).Select(x => new
+            //var disp = _connection.Discipline.Where(x => x.id_specialization == _group.id_specialization).Select(x => new
+            //{
+            //    Code = x.code,
+            //    Name = x.name,
+            //    Hours = $"{x.size}ч.",
+            //    Kafedra = x.Specialization.Department.name
+            //});
+            //dataDiscipline.ItemsSource = disp.ToList();
+
+            var disp = _connection.Discipline
+                .Where(x => _group.id_specialization == x.id_specialization)
+                .ToArray();
+
+
+            dataDiscipline.ItemsSource = disp.Select(x => new
             {
                 Code = x.code,
                 Name = x.name,
                 Hours = $"{x.size}ч.",
                 Kafedra = x.Specialization.Department.name
             });
-            dataDiscipline.ItemsSource = disp.ToList();
         }
 
         private void SerchBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -61,5 +76,42 @@ namespace University.Pages
             NavigationService.GoBack();
             NavigationService.RemoveBackEntry();
         }
+
+        private void SortAscButton_Click(object sender, RoutedEventArgs e)
+        {
+            //var sortedEmployees = _connection.Employe
+            //    .Where(x => _employe.id == x.id_department)
+            //    .OrderBy(x => x.salary)
+            //    .ToArray();
+
+            //dataEmploye.ItemsSource = sortedEmployees.Select(x => new EmployeeViwe
+            //{
+            //    id = x.id,
+            //    fio = x.People.Fio,
+            //    salary = x.salary,
+            //    post = x.post,
+            //    stazh = x.stazh,
+            //    department = x.Department.name
+            //});
+        }
+
+        private void SortDescButton_Click(object sender, RoutedEventArgs e)
+        {
+            //var sortedEmployees = _connection.Employe
+            //    .Where(x => _employe.id == x.id_department)
+            //    .OrderByDescending(x => x.salary)
+            //    .ToArray();
+
+            //dataEmploye.ItemsSource = sortedEmployees.Select(x => new EmployeeViwe
+            //{
+            //    id = x.id,
+            //    fio = x.People.Fio,
+            //    salary = x.salary,
+            //    post = x.post,
+            //    stazh = x.stazh,
+            //    department = x.Department.name
+            //});
+        }
     }
 }
+

@@ -77,21 +77,34 @@ namespace University.Pages
 
         private void DeletedButton_Click(object sender, RoutedEventArgs e)
         {
-            if(_employe is null)
+            try
             {
-                MessageBox.Show("Не выбрана дисциплина!");
+                if (_employe != null)
+                {
+                    using (var context = new DataBaseContext())
+                    {
+                        var employeeToDelete = context.Employe.Find(_employe.id);
+                        if (employeeToDelete != null)
+                        {
+                            context.Employe.Remove(employeeToDelete);
+                            context.SaveChanges();
+                            Load_Student(sender, e);
+                            MessageBox.Show("Сотрудник удален.", "Удачно", MessageBoxButton.OK, MessageBoxImage.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Сотрудник не найден.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Выберите сотрудника.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var exams = _connection.Exam.Where(x => x.id_distcipline == _employe.id).ToList();
-
-                //_connection.ExamResult.RemoveRange(exams.SelectMany(x => x.ExamResult));
-                //_connection.Exam.RemoveRange(exams);
-                _connection.Employe.Remove(_employe);
-                MessageBox.Show("Удаление выполнено!");
-
-                // TODO а может что-то другое
-                Load_Student(null, null);
+                MessageBox.Show($"Ошибка при удалении сотрудника: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -129,6 +142,42 @@ namespace University.Pages
         {
             NavigationService.GoBack();
             NavigationService.RemoveBackEntry();
+        }
+
+        private void SortAscButton_Click(object sender, RoutedEventArgs e)
+        {
+            var sortedEmployees = _connection.Employe
+                .Where(x => _employe.id == x.id_department)
+                .OrderBy(x => x.salary)
+                .ToArray();
+
+            dataEmploye.ItemsSource = sortedEmployees.Select(x => new EmployeeViwe
+            {
+                id = x.id,
+                fio = x.People.Fio,
+                salary = x.salary,
+                post = x.post,
+                stazh = x.stazh,
+                department = x.Department.name
+            });
+        }
+
+        private void SortDescButton_Click(object sender, RoutedEventArgs e)
+        {
+            var sortedEmployees = _connection.Employe
+                .Where(x => _employe.id == x.id_department)
+                .OrderByDescending(x => x.salary)
+                .ToArray();
+
+            dataEmploye.ItemsSource = sortedEmployees.Select(x => new EmployeeViwe
+            {
+                id = x.id,
+                fio = x.People.Fio,
+                salary = x.salary,
+                post = x.post,
+                stazh = x.stazh,
+                department = x.Department.name
+            });
         }
     }
 }

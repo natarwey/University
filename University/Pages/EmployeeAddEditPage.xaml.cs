@@ -36,15 +36,16 @@ namespace University.Pages
 
         private void Load_Student(object sender, RoutedEventArgs e)
         {
-            var fio = _connection.Employe.Where(x => x.id == _employe.id_people).ToList();
+            var fio = _connection.People.Where(x => x.role == 2).ToList();
             FioBox.ItemsSource = fio;
-            FioBox.DisplayMemberPath = "FIO";
-            var depart = _connection.Department.Where(x => x.id == _employe.id_department).ToList();
+            FioBox.DisplayMemberPath = "id";
+            var depart = _connection.Department.ToList();
             DepartBox.ItemsSource = depart;
-            DepartBox.DisplayMemberPath = "Depart";
+            DepartBox.DisplayMemberPath = "name";
             if (_employe != null)
             {
                 TextBoxFio.Text = "Редактирование сотрудника";
+                //FioBox.Text = _employe.id_people.ToString();
                 var index = fio.Select(x => x.id).ToList().IndexOf(_employe.People.id);
                 FioBox.SelectedIndex = index;
                 SalaryBox.Text = _employe.salary.ToString();
@@ -70,9 +71,10 @@ namespace University.Pages
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (FioBox.SelectedIndex == -1)
+            if (string.IsNullOrWhiteSpace(FioBox.Text))
             {
-                // TODO вывести ошибку что надо выбрать специальность для предмета;
+                MessageBox.Show("Пожалуйста, выберите ФИО сотрудника.");
+                return;
             }
             else
             {
@@ -80,37 +82,45 @@ namespace University.Pages
                 {
                     // когда создание
                     _employe = new Employe();
+                    //_employe.People.Fio = FioBox.Text;
                     _employe.id_people = (FioBox.SelectedItem as People).id;
                     _employe.salary = int.TryParse(SalaryBox.Text, out var value) ? value : 0;
                     _employe.post = PostBox.Text;
                     _employe.stazh = int.TryParse(StazhBox.Text, out var value2) ? value2 : 0;
                     _employe.id_department = (DepartBox.SelectedItem as Department).id;
-                    _employe.id_people = _people.id;
 
-                    _connection.Employe.Add(_employe);
-                    _connection.SaveChanges();
+                    using (var context = new DataBaseContext())
+                    {
+                        _connection.Employe.Add(_employe);
+                        _connection.SaveChanges();
+                    }
 
-                    // строчка для возвращения назад
-                    NavigationService.GoBack();
-                    NavigationService.RemoveBackEntry();
                     MessageBox.Show("Сотруднк сохранен!");
+                    NavigationService.GoBack();
+                    //NavigationService.RemoveBackEntry();
+                    
                 }
                 else
                 {
                     // когда редактирование
+                    //_employe.id_people = _people.id;
                     _employe.id_people = (FioBox.SelectedItem as People).id;
                     _employe.salary = int.TryParse(SalaryBox.Text, out var value) ? value : 0;
                     _employe.post = PostBox.Text;
                     _employe.stazh = int.TryParse(StazhBox.Text, out var value2) ? value2 : 0;
                     _employe.id_department = (DepartBox.SelectedItem as Department).id;
 
-                    _connection.SaveChanges();
+                    using (var context = new DataBaseContext())
+                    {
+                        _connection.SaveChanges();
+                    }
 
-                    NavigationService.GoBack();
-                    NavigationService.RemoveBackEntry();
                     MessageBox.Show("Сотруднк сохранен!");
+                    NavigationService.GoBack();
+                    //NavigationService.RemoveBackEntry();
                 }
             }
+            _connection.SaveChanges();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

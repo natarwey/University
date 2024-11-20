@@ -7,11 +7,18 @@
       mc:Ignorable="d" 
       Title="Главная страница" Height="450" Width="800">
 
-    <Grid Background="White">
-        <Label x:Name="lableNameStudent" Content="Label" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.543,0.536" />
-        <Button x:Name="btnEmployees" Content="Сотрудники" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top" Width="120" Click="btnEmployees_Click"/>
-        <Button x:Name="btnDepartments" Content="Кафедры" HorizontalAlignment="Left" Margin="10,135,0,0" VerticalAlignment="Top" Width="120" Click="btnDepartments_Click"/>
-        <Button x:Name="btnDisciplines" Content="Дисциплины" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Width="120" Click="btnDisciplines_Click"/>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF1F0040" Offset="1"/>
+                <GradientStop Color="#FFDED0EC" Offset="0.71"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        
+        <Label x:Name="lableNameStudent" Content="Label" HorizontalAlignment="Center" Margin="10,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.543,0.536" />
+        <Button x:Name="btnEmployees" Content="Сотрудники" Background="White" BorderBrush="#FF210242" Foreground="#FF210242" HorizontalAlignment="Center" Margin="10,100,0,0" VerticalAlignment="Top" Width="120" Click="btnEmployees_Click"/>
+        <Button x:Name="btnDepartments" Content="Кафедры" Background="White" BorderBrush="#FF210242" Foreground="#FF210242" HorizontalAlignment="Center" Margin="10,150,0,0" VerticalAlignment="Top" Width="120" Click="btnDepartments_Click"/>
+        <Button x:Name="btnDisciplines" Content="Дисциплины" Background="White" BorderBrush="#FF210242" Foreground="#FF210242" HorizontalAlignment="Center" Margin="10,200,0,0" VerticalAlignment="Top" Width="120" Click="btnDisciplines_Click"/>
 
         <Border BorderThickness="1" Margin="0,-13,0,13">
             <Button x:Name="BackButton" Content="Назад" Background="#FFB6A0CC" BorderBrush="Black" Foreground="Black" Height="40" Width="90" HorizontalAlignment="Left" Margin="690,30,0,0" VerticalAlignment="Top" Click="BackButton_Click"/>

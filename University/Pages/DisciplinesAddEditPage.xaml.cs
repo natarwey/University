@@ -62,7 +62,8 @@ namespace University.Pages
         {
             if (SpecializBox.SelectedIndex == -1)
             {
-                // TODO вывести ошибку что надо выбрать специальность для предмета;
+                MessageBox.Show("Пожалуйста, выберите специальность для дисциплины.");
+                return;
             }
             else
             {

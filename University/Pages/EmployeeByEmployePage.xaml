@@ -27,6 +27,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="SerchBox" HorizontalAlignment="Left" Margin="100,78,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" TextChanged="SerchBox_TextChanged"/>
+        <Button x:Name="SortAscButton" Content="↑" Background="White" BorderBrush="#FF210242" Foreground="#FF210242" Height="18" Width="20" Click="SortAscButton_Click" Margin="250,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button x:Name="SortDescButton" Content="↓" Background="White" BorderBrush="#FF210242" Foreground="#FF210242" Height="18" Width="20" Click="SortDescButton_Click" Margin="270,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
         <Button x:Name="AddButton" Content="Добавить" Background="White" BorderBrush="#FF210242" Foreground="#FF210242" Height="40" Width="120" Margin="0,0,300,50" Click="AddButton_Click" VerticalAlignment="Bottom"/>
         <Button x:Name="EditButton" Content="Изменить" Background="White" BorderBrush="#FF210242" Foreground="#FF210242" Height="40" Width="120" Click="EditButton_Click" Margin="0,1,0,50" VerticalAlignment="Bottom"/>
         <Button x:Name="DeletedButton" Content="Удалить" Background="White" BorderBrush="#FF210242" Foreground="#FF210242" Height="40" Width="120" Click="DeletedButton_Click" Margin="300,0,0,50" VerticalAlignment="Bottom"/>

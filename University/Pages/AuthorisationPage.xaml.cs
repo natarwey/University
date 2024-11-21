@@ -30,8 +30,6 @@ namespace University.Pages
             var login = txtLogin.Text;
             var password = txtPassword.Password;
 
-            // TODO можно прикрутить Regex для проверки заполнения полей
-
             if (String.IsNullOrEmpty(txtLogin.Text) || String.IsNullOrEmpty(txtPassword.Password))
             {
                 MessageBox.Show("Заполните все поля!");

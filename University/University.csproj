@@ -137,6 +137,12 @@
     <Compile Include="Data\Teacher.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DepartamentPage.xaml.cs">
+      <DependentUpon>DepartamentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DepartamentAddEditPage.xaml.cs">
+      <DependentUpon>DepartamentAddEditPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EmployeeAddEditPage.xaml.cs">
       <DependentUpon>EmployeeAddEditPage.xaml</DependentUpon>
     </Compile>
@@ -174,9 +180,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\DepartmentsPage.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Pages\DepartamentPage.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\DepartamentAddEditPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\EmployeeAddEditPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -218,9 +228,6 @@
   <ItemGroup>
     <Compile Include="Pages\AuthorisationPage.xaml.cs">
       <DependentUpon>AuthorisationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\DepartmentsPage.xaml.cs">
-      <DependentUpon>DepartmentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\DisciplinesByStudentPage.xaml.cs">
       <DependentUpon>DisciplinesByStudentPage.xaml</DependentUpon>

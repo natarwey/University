@@ -31,8 +31,6 @@ namespace University.Pages
             InitializeComponent();
             _student = student;
             _group = student.Group;
-
-
         }
 
         private void Load_Student(object sender, RoutedEventArgs e)

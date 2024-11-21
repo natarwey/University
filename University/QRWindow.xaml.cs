@@ -30,10 +30,8 @@ namespace University
 
         private void ShowImageButton_Click(object sender, RoutedEventArgs e)
         {
-            // Укажите путь к вашему изображению
-            string imagePath = "";
+            string imagePath = "C:\\Users\\user\\Desktop\\UniversityMy\\University\\qr.png";
 
-            // Создаем BitmapImage и устанавливаем его как источник для Image
             BitmapImage bitmap = new BitmapImage();
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(imagePath, UriKind.RelativeOrAbsolute);
@@ -41,29 +39,5 @@ namespace University
 
             ImageViewer.Source = bitmap;
         }
-        //private void Button_Click(object sender, RoutedEventArgs e) // Кнопка создания QR кода
-        //{
-        //    // Ссылка на XL таблицу
-        //    string soucer_xl = "Вставьте ссылку на google таблицу";
-        //    // Создание переменной библиотеки QRCoder
-        //    QRCoder.QRCodeGenerator qr = new QRCoder.QRCodeGenerator();
-        //    // Присваеваем значиения
-        //    QRCoder.QRCodeData data = qr.CreateQrCode(soucer_xl, QRCoder.QRCodeGenerator.ECCLevel.L);
-        //    // переводим в Qr
-        //    QRCoder.QRCode code = new QRCoder.QRCode(data);
-        //    Bitmap bitmap = code.GetGraphic(100);
-        //    /// Создание картинки
-        //    using (MemoryStream memory = new MemoryStream())
-        //    {
-        //        bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
-        //        memory.Position = 0;
-        //        BitmapImage bitmapimage = new BitmapImage();
-        //        bitmapimage.BeginInit();
-        //        bitmapimage.StreamSource = memory;
-        //        bitmapimage.CacheOption = BitmapCacheOption.OnLoad;
-        //        bitmapimage.EndInit();
-        //        imageQr.Source = bitmapimage;
-        //    }
-        //}
     }
 }

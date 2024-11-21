@@ -38,7 +38,7 @@ namespace University.Pages
 
         private void btnDepartments_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DepartmentsPage());
+            NavigationService.Navigate(new DepartamentPage(_employer));
         }
 
         private void btnDisciplines_Click(object sender, RoutedEventArgs e)

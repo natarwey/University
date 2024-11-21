@@ -42,7 +42,7 @@ namespace University.Pages
                 Date = x.date,
                 Audit = x.ayditory,
                 Prepod = x.Employe.People.Fio,
-                Result = x.ExamResult.FirstOrDefault(y=>y.id_student == _student.id)?.result
+                Result = x.ExamResult.FirstOrDefault(y => y.id_student == _student.id)?.result
             });
             dataExam.ItemsSource = disp.ToList();
         }
@@ -74,6 +74,41 @@ namespace University.Pages
                 return;
             string examCode = rowView.Code;
             _exam = _group.Exam.FirstOrDefault(x => x.code.ToString() == examCode);
+        }
+        private void SortAscButton_Click(object sender, RoutedEventArgs e)
+        {
+            var sortedExams = _group.Exam
+                .OrderBy(x => x.date)
+                .Select(x => new
+                {
+                    Code = x.code,
+                    Name = x.Discipline.name,
+                    Date = x.date,
+                    Audit = x.ayditory,
+                    Prepod = x.Employe.People.Fio,
+                    Result = x.ExamResult.FirstOrDefault(y => y.id_student == _student.id)?.result
+                })
+                .ToList();
+
+            dataExam.ItemsSource = sortedExams;
+        }
+
+        private void SortDescButton_Click(object sender, RoutedEventArgs e)
+        {
+            var sortedExams = _group.Exam
+                .OrderByDescending(x => x.date)
+                .Select(x => new
+                {
+                    Code = x.code,
+                    Name = x.Discipline.name,
+                    Date = x.date,
+                    Audit = x.ayditory,
+                    Prepod = x.Employe.People.Fio,
+                    Result = x.ExamResult.FirstOrDefault(y => y.id_student == _student.id)?.result
+                })
+                .ToList();
+
+            dataExam.ItemsSource = sortedExams;
         }
     }
 }

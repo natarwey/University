@@ -71,7 +71,7 @@ namespace University.Pages
 
                     using (var context = new DataBaseContext())
                     {
-                        _connection.Employe.Add(_employe);
+                        _connection.Department.Add(_department);
                         _connection.SaveChanges();
                     }
 
@@ -82,7 +82,6 @@ namespace University.Pages
                 else
                 {
                     // когда редактирование
-                    _department = new Department();
                     _department.id = int.TryParse(IdBox.Text, out var value) ? value : 0;
                     _department.name = NameBox.Text;
 
@@ -97,6 +96,7 @@ namespace University.Pages
                     
                 }
             }
+            _connection.SaveChanges();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)

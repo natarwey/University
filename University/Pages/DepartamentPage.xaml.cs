@@ -67,7 +67,7 @@ namespace University.Pages
         {
             if (_department is null)
             {
-                MessageBox.Show("Выберите дисциплину!");
+                MessageBox.Show("Выберите кафедру!");
             }
             else
             {
@@ -90,22 +90,22 @@ namespace University.Pages
                             context.Department.Remove(departamentToDelete);
                             context.SaveChanges();
                             Load_Student(sender, e);
-                            MessageBox.Show("Дисциплина удалена.", "Удача", MessageBoxButton.OK, MessageBoxImage.Information);
+                            MessageBox.Show("Кафедра удалена.", "Удача", MessageBoxButton.OK, MessageBoxImage.Information);
                         }
                         else
                         {
-                            MessageBox.Show("Дисциплина не найдена.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                            MessageBox.Show("Кафедра не найдена.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                         }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Выберите дисциплину.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Выберите кафедру.", "Внимание", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при удалении дисциплины: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Ошибка при удалении кафедры: {ex.Message}", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

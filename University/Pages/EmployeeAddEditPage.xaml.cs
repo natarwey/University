@@ -73,7 +73,7 @@ namespace University.Pages
         {
             if (string.IsNullOrWhiteSpace(FioBox.Text))
             {
-                MessageBox.Show("Пожалуйста, выберите ФИО сотрудника.");
+                MessageBox.Show("Пожалуйста, выберите id сотрудника.");
                 return;
             }
             else
